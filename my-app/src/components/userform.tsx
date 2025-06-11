@@ -343,8 +343,8 @@ export default function UserForm() {
   const isEditing = !!id;
 
   const [user, setUser] = useState<Omit<User, "id"> & { password: string }>({
-    firstname: "",
-    lastname: "",
+    firstName: "",
+    lastName: "",
     email: "",
     password: "",
   });
@@ -377,11 +377,11 @@ export default function UserForm() {
   const validate = () => {
     const newErrors: Record<string, string> = {};
 
-    if (!user.firstname.trim()) {
+    if (!user.firstName.trim()) {
       newErrors.firstname = "First name is required";
     }
 
-    if (!user.lastname.trim()) {
+    if (!user.lastName.trim()) {
       newErrors.lastname = "Last name is required";
     }
 
@@ -411,8 +411,8 @@ export default function UserForm() {
     if (!validate() || isLoading) return;
 
     const userData = {
-      firstname: user.firstname.trim(),
-      lastname: user.lastname.trim(),
+      firstName: user.firstName.trim(),
+      lastName: user.lastName.trim(),
       email: user.email.trim(),
       ...(user.password && { password: user.password }),
     };
@@ -436,7 +436,7 @@ export default function UserForm() {
     }
   };
 
-  if (isLoading && isEditing && !user.firstname) {
+  if (isLoading && isEditing && !user.firstName) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-blue-500"></div>
@@ -472,8 +472,8 @@ export default function UserForm() {
             </label>
             <input
               type="text"
-              value={user.firstname}
-              onChange={(e) => setUser({ ...user, firstname: e.target.value })}
+              value={user.firstName}
+              onChange={(e) => setUser({ ...user, firstName: e.target.value })}
               className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
                 errors.firstname ? 'border-red-300' : 'border-gray-300'
               }`}
@@ -490,8 +490,8 @@ export default function UserForm() {
             </label>
             <input
               type="text"
-              value={user.lastname}
-              onChange={(e) => setUser({ ...user, lastname: e.target.value })}
+              value={user.lastName}
+              onChange={(e) => setUser({ ...user, lastName: e.target.value })}
               className={`w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 ${
                 errors.lastname ? 'border-red-300' : 'border-gray-300'
               }`}

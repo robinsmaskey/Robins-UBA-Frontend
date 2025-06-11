@@ -316,7 +316,7 @@ const UserCard = ({
     <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
       <div className="flex-1 min-w-0">
         <h3 className="font-medium text-gray-800 truncate">
-          {user.firstname} {user.lastname}
+          {user.firstName} {user.lastName}
         </h3>
         <p className="text-sm text-gray-600 truncate" title={user.email}>
           {user.email}
@@ -331,7 +331,7 @@ const UserCard = ({
         <Link
           to={`/users/${user.id}/edit`}
           className="text-blue-500 hover:text-blue-700 px-3 py-1 rounded hover:bg-blue-50 transition duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
-          aria-label={`Edit ${user.firstname} ${user.lastname}`}
+          aria-label={`Edit ${user.firstName} ${user.lastName}`}
         >
           Edit
         </Link>
@@ -340,7 +340,7 @@ const UserCard = ({
             onClick={() => onDelete(user.id!)}
             disabled={isDeleting}
             className="text-red-500 hover:text-red-700 px-3 py-1 rounded hover:bg-red-50 transition duration-200 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
-            aria-label={`Delete ${user.firstname} ${user.lastname}`}
+            aria-label={`Delete ${user.firstName} ${user.lastName}`}
           >
             {isDeleting ? <LoadingSpinner size="h-4 w-4" /> : "Delete"}
           </button>
@@ -400,7 +400,7 @@ export default function UserList() {
   // Enhanced delete handler with individual loading states
   const handleDelete = useCallback(async (id: number) => {
     const userToDelete = users.find(user => user.id === id);
-    const userName = userToDelete ? `${userToDelete.firstname} ${userToDelete.lastname}` : 'this user';
+    const userName = userToDelete ? `${userToDelete.firstName} ${userToDelete.lastName}` : 'this user';
     
     if (!window.confirm(`Are you sure you want to delete ${userName}? This action cannot be undone.`)) {
       return;
@@ -461,7 +461,7 @@ export default function UserList() {
           {currentUser && (
             <div className="text-right">
               <span className="text-gray-600 block text-sm">Welcome back,</span>
-              <span className="font-medium text-gray-800">{currentUser.firstname}!</span>
+              <span className="font-medium text-gray-800">{currentUser.firstName}!</span>
             </div>
           )}
           <button

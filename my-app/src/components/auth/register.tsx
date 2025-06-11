@@ -68,8 +68,8 @@ import { User } from "../../types/user";
 
 export default function Register() {
   const [user, setUser] = useState<Omit<User, "id">>({
-    firstname: "",
-    lastname: "",
+    firstName: "",
+    lastName: "",
     email: "",
     password: "",
   });
@@ -82,11 +82,11 @@ export default function Register() {
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
 
-    if (!user.firstname.trim()) {
+    if (!user.firstName.trim()) {
       newErrors.firstname = "First name is required";
     }
 
-    if (!user.lastname.trim()) {
+    if (!user.lastName.trim()) {
       newErrors.lastname = "Last name is required";
     }
 
@@ -137,6 +137,7 @@ export default function Register() {
 
   setIsLoading(true);
   try {
+    console.log("Submitting user:", user);
     await register(user);
     navigate("/");
   } catch (err: any) {
@@ -179,8 +180,8 @@ export default function Register() {
             <div>
               <input
                 type="text"
-                value={user.firstname}
-                onChange={(e) => setUser({ ...user, firstname: e.target.value })}
+                value={user.firstName}
+                onChange={(e) => setUser({ ...user, firstName: e.target.value })}
                 placeholder="First Name"
                 className={`appearance-none relative block w-full px-3 py-2 border ${errors.firstname ? 'border-red-300' : 'border-gray-300'} placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm`}
                 required
@@ -191,8 +192,8 @@ export default function Register() {
             <div>
               <input
                 type="text"
-                value={user.lastname}
-                onChange={(e) => setUser({ ...user, lastname: e.target.value })}
+                value={user.lastName}
+                onChange={(e) => setUser({ ...user, lastName: e.target.value })}
                 placeholder="Last Name"
                 className={`appearance-none relative block w-full px-3 py-2 border ${errors.lastname ? 'border-red-300' : 'border-gray-300'} placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm`}
                 required

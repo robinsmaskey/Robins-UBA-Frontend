@@ -390,15 +390,15 @@ export default function UserSearch() {
     if (search.trim()) {
       const searchTerm = search.toLowerCase();
       filteredData = filteredData.filter((user) =>
-        `${user.firstname} ${user.lastname}`.toLowerCase().includes(searchTerm) ||
+        `${user.firstName} ${user.lastName}`.toLowerCase().includes(searchTerm) ||
         user.email.toLowerCase().includes(searchTerm)
       );
     }
 
     // Sort by firstname
     filteredData.sort((a, b) => {
-      const nameA = a.firstname.toLowerCase();
-      const nameB = b.firstname.toLowerCase();
+      const nameA = a.firstName.toLowerCase();
+      const nameB = b.firstName.toLowerCase();
       return sortAsc ? nameA.localeCompare(nameB) : nameB.localeCompare(nameA);
     });
 
@@ -550,7 +550,7 @@ export default function UserSearch() {
                   <tr key={user.id} className="border-b border-gray-100 hover:bg-gray-50 transition-colors">
                     <td className="p-4">
                       <div className="font-medium text-gray-800">
-                        {user.firstname} {user.lastname}
+                        {user.firstName} {user.lastName}
                       </div>
                     </td>
                     <td className="p-4 text-gray-600">{user.email}</td>
