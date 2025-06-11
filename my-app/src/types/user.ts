@@ -1,5 +1,3 @@
-// 
-
 //New code
 export interface User {
   id?: number;

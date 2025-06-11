@@ -1,7 +1,7 @@
 /* Tailwind CSS Directives - Add these at the top */
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
 
 /* Your existing styles - Keep these unchanged */
 body {
